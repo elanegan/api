@@ -23,6 +23,11 @@ def test_read_user():
     assert response.status_code == 200
 
 
+def test_read_non_user():
+    response = client.get('/users/404')
+    assert response.status_code == 404
+
+
 def test_update_user_points():
     sample_user_with_points['username'] = 'user124'
     in_db = (client.get('/users/1')).json()
